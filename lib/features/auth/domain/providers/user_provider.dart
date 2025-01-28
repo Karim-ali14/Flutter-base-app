@@ -3,7 +3,7 @@ import 'package:base_flutter_app/core/providers/http_provider.dart';
 import 'package:base_flutter_app/features/auth/data/models/user_model.dart';
 import 'package:base_flutter_app/features/auth/domain/entities/user_entity.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/Constants.dart';
+import '../../../../core/constants/Constants.dart';
 import '../../../../main.dart';
 
 class UserProvider extends StateNotifier<User?> {

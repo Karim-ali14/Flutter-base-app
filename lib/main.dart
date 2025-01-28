@@ -1,13 +1,14 @@
 
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
+import 'package:base_flutter_app/features/auth/presentation/screens/auth/login_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timeago/timeago.dart' as ago;
-import 'core/Constants.dart';
 import 'core/Theme/app_theme.dart';
+import 'core/constants/Constants.dart';
 import 'features/auth/presentation/screens/splash_screen.dart';
 
 
@@ -136,7 +137,7 @@ class MyApp extends ConsumerWidget {
     routes: <GoRoute>[
       GoRoute(
         path: R_splashScreenRout,
-        builder: (BuildContext context, GoRouterState state) => const SplashScreen(),
+        builder: (BuildContext context, GoRouterState state) => LoginScreen(),
       ),
     ],
   );

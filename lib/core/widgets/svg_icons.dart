@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../Constants.dart';
+
+import '../constants/Assets.dart';
 
 class SVGIcons {
   static Widget shareIcon(){

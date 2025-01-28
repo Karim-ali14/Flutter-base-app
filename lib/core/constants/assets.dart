@@ -6,10 +6,3 @@ const itemsIconSvg = "assets/images/items.svg";
 const userPlaceholder = "assets/images/app_placeholder.png";
 const coverPlaceholder = "assets/images/app_placeholder.png";
 
-//PAGES_ROUTS
-const R_splashScreenRout = '/';
-const R_MainScreen = '/mainScreen';
-const R_OTP = '/otp';
-
-//KEYS
-const USER_KEY = 'user_key';

@@ -1,84 +1,36 @@
+import 'package:base_flutter_app/core/widgets/custom_app_bar.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../../core/Constants/Constants.dart';
+import '../../../../../core/Theme/app_theme.dart';
+import '../../../../../core/localization/Keys.dart';
 
-class CustomStepperWithProgressBars extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
+
   @override
-  _CustomStepperWithProgressBarsState createState() =>
-      _CustomStepperWithProgressBarsState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _CustomStepperWithProgressBarsState
-    extends State<CustomStepperWithProgressBars> {
-  int _currentStep = 0;
-
-  final List<double> _progressValues = [0.0, 0.0, 0.0];
+class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Custom Stepper with Progress Bars')),
-      body: Stepper(
-        currentStep: _currentStep,
-        onStepContinue: () {
-          if (_currentStep < _progressValues.length - 1) {
-            setState(() {
-              _currentStep++;
-            });
-          }
-        },
-        onStepCancel: () {
-          if (_currentStep > 0) {
-            setState(() {
-              _currentStep--;
-            });
-          }
-        },
-        onStepTapped: (step) {
-          setState(() {
-            _currentStep = step;
-          });
-        },
-        steps: _buildSteps(),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _progressValues[_currentStep] =
-                (_progressValues[_currentStep] + 0.25).clamp(0.0, 1.0);
-          });
-        },
-        child: Icon(Icons.add),
-        tooltip: 'Increase Progress',
-      ),
+      appBar: CustomAppBar(
+        navigated: true,
+        appContext: context,
+        title: context.tr(SignInKey),
+          trailingWidget: Padding(
+            padding: const EdgeInsets.symmetric(
+                horizontal: defaultPaddingHorizontal),
+            child: Text(
+            "Arabic",
+              style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts16w400,
+            ),
+          )),
+      body: Text("")
     );
   }
 
-  List<Step> _buildSteps() {
-    return List.generate(_progressValues.length, (index) {
-      return Step(
-        title: Text('Step ${index + 1}'),
-        content: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Progress for Step ${index + 1}:'),
-            SizedBox(height: 8),
-            LinearProgressIndicator(
-              value: _progressValues[index],
-              minHeight: 8,
-              backgroundColor: Colors.grey[300],
-              color: Colors.blue,
-            ),
-            SizedBox(height: 8),
-            Text(
-              'Completion: ${(100 * _progressValues[index]).toInt()}%',
-              style: TextStyle(fontSize: 16),
-            ),
-          ],
-        ),
-        isActive: index == _currentStep,
-        state: _progressValues[index] == 1.0
-            ? StepState.complete
-            : StepState.indexed,
-      );
-    });
-  }
 }
